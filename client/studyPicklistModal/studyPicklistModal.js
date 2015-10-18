@@ -1,18 +1,28 @@
 Meteor.startup(function () {
   Session.setDefault('show_study_picklist', false);
+  Session.setDefault('studySearchFilter', "");
   Session.setDefault('selectedUserId', null);
-  Session.setDefault('selectedUserName', "");
 });
 
 
 Template.studyPicklistModal.events({
-  "click #userPicklistOkButton": function (event, template) {
+  'click #studyPicklistCancelButton': function (){
     Session.set('show_study_picklist', false);
     Session.set('show_reactive_overlay', false);
   },
-  'click .userRow': function (){
+  'change #studySearchInput': function (){
+    Session.set('studySearchFilter', $('#studySearchInput').val());
+  },
+  'keyup #studySearchInput': function (){
+    Session.set('studySearchFilter', $('#studySearchInput').val());
+  },
+  "click #studyPicklistOkButton": function (event, template) {
+    Session.set('show_study_picklist', false);
+    Session.set('show_reactive_overlay', false);
+  },
+  'click .studyRow': function (){
     Session.set("selectedUserId", this._id);
-    Session.set('selectedUserName', this.profile.fullName);
+    Session.set("studySearchFilter", this.name);
     Session.set('show_study_picklist', false);
     Session.set('show_reactive_overlay', false);
   }
@@ -20,9 +30,24 @@ Template.studyPicklistModal.events({
 
 
 Template.studyPicklistModal.helpers({
+  getCurrentSearchFilter: function (){
+    return Session.get('studySearchFilter');
+  },
   studiesList: function () {
-    return [];
-    //return Studies.find();
+    // return Studies.find({$or:[
+    //   {
+    //     _id: {
+    //       $regex: Session.get('studySearchFilter'),
+    //       $options: 'i'
+    //     }
+    //   },
+    //   {
+    //     'name': {
+    //       $regex: Session.get('studySearchFilter'),
+    //       $options: 'i'
+    //     }
+    //   }
+    // ]});
   },
   getVisibility: function () {
     if (Session.get('show_study_picklist')) {
