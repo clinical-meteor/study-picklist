@@ -1,8 +1,8 @@
 Package.describe({
   name: 'clinical:study-picklist',
-  version: '0.0.5',
+  version: '1.0.5',
   summary: 'User Picklist modal for  ClinicalFramework apps.',
-  git: 'https://github.com/awatson1978/clinical-keybindings',
+  git: 'https://github.com/clinical-meteor/clinical-study-picklist',
   documentation: 'README.md'
 });
 
@@ -12,7 +12,7 @@ Package.onUse(function (api) {
   api.use('meteor-platform');
   api.use('grove:less@0.1.1');
   api.use('awatson1978:fonts-helveticas@1.0.4');
-  api.use('clinical:modals@0.0.3');
+  api.use('clinical:modals@1.0.5');
 
   api.addFiles('client/studyPicklistModal/studyPicklistModal.html', 'client');
   api.addFiles('client/studyPicklistModal/studyPicklistModal.js', 'client');
@@ -20,6 +20,7 @@ Package.onUse(function (api) {
 
   api.export('userPicklistModal');
 });
+
 
 Package.onTest(function (api) {
   api.use('tinytest');
