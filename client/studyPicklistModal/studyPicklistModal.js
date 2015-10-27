@@ -1,6 +1,5 @@
 Meteor.startup(function () {
   Session.setDefault('show_study_picklist', false);
-  Session.setDefault('studySearchFilter', "");
   Session.setDefault('selectedUserId', null);
 });
 
