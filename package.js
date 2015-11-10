@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:study-picklist',
-  version: '1.0.8',
+  version: '1.0.10',
   summary: 'User Picklist modal for  ClinicalFramework apps.',
   git: 'https://github.com/clinical-meteor/clinical-study-picklist',
   documentation: 'README.md'
