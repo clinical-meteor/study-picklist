@@ -7,7 +7,7 @@ Meteor.startup(function () {
 Template.studyPicklistModal.events({
   'click #studyPicklistCancelButton': function (){
     Session.set('show_study_picklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
   },
   'change #studySearchInput': function (){
     Session.set('studySearchFilter', $('#studySearchInput').val());
@@ -17,13 +17,13 @@ Template.studyPicklistModal.events({
   },
   "click #studyPicklistOkButton": function (event, template) {
     Session.set('show_study_picklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
   },
   'click .studyRow': function (){
     Session.set("selectedUserId", this._id);
     Session.set("studySearchFilter", this.name);
     Session.set('show_study_picklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
   }
 });
 
