@@ -1,12 +1,12 @@
 Meteor.startup(function () {
-  Session.setDefault('show_study_picklist', false);
+  Session.setDefault('showStudyPicklist', false);
   Session.setDefault('selectedUserId', null);
 });
 
 
 Template.studyPicklistModal.events({
   'click #studyPicklistCancelButton': function (){
-    Session.set('show_study_picklist', false);
+    Session.set('showStudyPicklist', false);
     Session.set('showReactiveOverlay', false);
   },
   'change #studySearchInput': function (){
@@ -16,13 +16,13 @@ Template.studyPicklistModal.events({
     Session.set('studySearchFilter', $('#studySearchInput').val());
   },
   "click #studyPicklistOkButton": function (event, template) {
-    Session.set('show_study_picklist', false);
+    Session.set('showStudyPicklist', false);
     Session.set('showReactiveOverlay', false);
   },
   'click .studyRow': function (){
     Session.set("selectedUserId", this._id);
     Session.set("studySearchFilter", this.name);
-    Session.set('show_study_picklist', false);
+    Session.set('showStudyPicklist', false);
     Session.set('showReactiveOverlay', false);
   }
 });
@@ -49,7 +49,7 @@ Template.studyPicklistModal.helpers({
     // ]});
   },
   getVisibility: function () {
-    if (Session.get('show_study_picklist')) {
+    if (Session.get('showStudyPicklist')) {
       return "visible";
     } else {
       return "fade";
